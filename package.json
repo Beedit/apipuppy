@@ -17,5 +17,6 @@
     "@ctroenv/core": "^1.5.0",
     "@ctroenv/node": "^1.1.2",
     "@twurple/easy-bot": "^8.2.0"
-  }
+  },
+  "license": "MIT"
 }
