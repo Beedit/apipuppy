@@ -1,3 +1,4 @@
+import type { ICommand } from "../utils/interface/ICommand.js";
 import { selectRandom } from "../utils/utils.js";
 
 const pbHighMessages = [
@@ -75,7 +76,8 @@ const pbLowMessages = [
   "averypuPpypgun bro dont even ask me",
 ];
 
-const isthisgoingtopb = (reply: Function) => {
+const isthisgoingtopb: ICommand = {
+  function: (reply: Function) => {
     const chance = Math.floor(Math.random() * 101);
     let verdict: string;
 
@@ -88,6 +90,8 @@ const isthisgoingtopb = (reply: Function) => {
     }
 
     reply(`${verdict} PB probability: ${chance}%`)
+  },
+  name: "isthisgoingtopb"
 }
 
 export { isthisgoingtopb }

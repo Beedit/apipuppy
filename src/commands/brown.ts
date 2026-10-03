@@ -1,3 +1,4 @@
+import type { ICommand } from "../utils/interface/ICommand.js";
 import { selectRandom } from "../utils/utils.js"
 
 const brownMessages = [
@@ -25,8 +26,11 @@ const brownMessages = [
   "averypuPpypgun tube ride moment",
 ];
 
-const brown = (reply: Function) => {
+const brown: ICommand = {
+  function: (reply: Function) => {
     reply(selectRandom(brownMessages))
+  },
+  name: "brown"
 }
 
 export { brown }

@@ -1,29 +1,15 @@
 import { StaticAuthProvider } from "@twurple/auth";
-import { Bot, createBotCommand } from "@twurple/easy-bot";
-import { woof } from "./commands/woof.js";
+import { Bot } from "@twurple/easy-bot";
 import { env } from "./utils/env.js";
-import { brown } from "./commands/brown.js";
-import { gg } from "./commands/gg.js";
-import { gold } from "./commands/gold.js";
-import { fortune } from "./commands/fortune.js";
-import { isthisgoingtopb } from "./commands/isthisgoingtopb.js";
+import { createCommands, commands } from "./utils/utils.js";
 
 const authProvider = new StaticAuthProvider(env.clientID, env.accessToken);
 
-const bot = new Bot(
-    {
-        authProvider,
-        channel: "averypuppy",
-        commands: [
-            createBotCommand("woof", (_params, { reply }) => { woof(reply) }, { aliases: ["puppy", "dog"] }),
-            createBotCommand("brown", (_params, { reply}) => { brown(reply) }),
-            createBotCommand("fortune", (_params, { reply }) => { fortune(reply) }),
-            createBotCommand("gg", (_params, { reply }) => { gg(reply) }),
-            createBotCommand("gold", (_params, { reply }) => { gold(reply) }),
-            createBotCommand("isthisgoingtopb", (_params, { reply }) => { isthisgoingtopb(reply) }),
-        ]
-    }
-)
+const bot = new Bot({
+    authProvider,
+    channel: "averypuppy",
+    commands: createCommands(commands)
+})
 
 bot.onSub(({ broadcasterName, userName }) => {
 	bot.say(broadcasterName, `AWOO @${userName}!! subscribed to the channel!`);

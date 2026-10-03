@@ -1,3 +1,4 @@
+import type { ICommand } from "../utils/interface/ICommand.js";
 import { selectRandom } from "../utils/utils.js";
 
 const woofMessages = [
@@ -68,8 +69,13 @@ const woofMessages = [
   "martin8 jumpscare",
 ];
 
-const woof = (reply: Function) => {
+const woof: ICommand = {
+  function: (reply: Function) => {
     reply(selectRandom(woofMessages))
+  },
+  name: "woof",
+  parameters: { aliases: ["puppy", "dog"] }
 }
+
 
 export { woof }

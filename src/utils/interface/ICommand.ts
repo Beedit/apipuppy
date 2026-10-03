@@ -1,0 +1,14 @@
+/**
+ * Command interface to ensure that it can be registered correctly
+ * @function function Function to be run
+ * @member {string} name Name of the command
+ * @member {object} parameters Parameters of the command (Optional)
+ */
+export interface ICommand {
+    /** Function to be run */
+    function: Function,
+    /** Name of the command */
+    name: string,
+    /** Parameters of the command */
+    parameters?: object
+}

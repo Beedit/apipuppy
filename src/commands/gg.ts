@@ -1,3 +1,4 @@
+import type { ICommand } from "../utils/interface/ICommand.js";
 import { selectRandom } from "../utils/utils.js"
 
 const ggMessages = [
@@ -36,8 +37,10 @@ const ggMessages = [
   "gg i guess idk",
 ];
 
-const gg = (reply: Function) => {
+const gg: ICommand = {
+  function: (reply: Function) => {
     reply(selectRandom(ggMessages))
+  },
+  name: "gg"
 }
-
 export { gg }
