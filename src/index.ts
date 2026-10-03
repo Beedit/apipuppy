@@ -1,11 +1,11 @@
-import { StaticAuthProvider } from "@twurple/auth";
-import { Bot, createBotCommand } from "@twurple/easy-bot";
-import { woof } from "./commands/woof.js";
-import { env } from "./utils/env.js";
-import { brown } from "./commands/brown.js";
-import { gg } from "./commands/gg.js";
-import { gold } from "./commands/gold.js";
-import { fortune } from "./commands/fortune.js";
+import { StaticAuthProvider } from "npm:@twurple/auth";
+import { Bot, createBotCommand } from "npm:@twurple/easy-bot";
+import { woof } from "./commands/woof.ts";
+import { env } from "./utils/env.ts";
+import { brown } from "./commands/brown.ts";
+import { gg } from "./commands/gg.ts";
+import { gold } from "./commands/gold.ts";
+import { fortune } from "./commands/fortune.ts";
 
 const authProvider = new StaticAuthProvider(env.clientID, env.accessToken);
 
@@ -14,11 +14,11 @@ const bot = new Bot(
         authProvider,
         channel: "averypuppy",
         commands: [
-            createBotCommand("woof", (_params, { replyToParent }) => { woof(replyToParent) }, { aliases: ["puppy", "dog"] }),
-            createBotCommand("brown", (_params, {replyToParent}) => { brown(replyToParent) }),
-            createBotCommand("fortune", (_params, {replyToParent}) => { fortune(replyToParent) }),
-            createBotCommand("gg", (_params, {replyToParent}) => { gg(replyToParent) }),
-            createBotCommand("gold", (_params, {replyToParent}) => { gold(replyToParent) }),
+            createBotCommand("woof", (_params, { reply }) => { woof(reply) }, { aliases: ["puppy", "dog"] }),
+            createBotCommand("brown", (_params, { reply}) => { brown(reply) }),
+            createBotCommand("fortune", (_params, { reply }) => { fortune(reply) }),
+            createBotCommand("gg", (_params, { reply }) => { gg(reply) }),
+            createBotCommand("gold", (_params, { reply }) => { gold(reply) }),
         ]
     }
 )
@@ -32,3 +32,5 @@ bot.onResub(({ broadcasterName, userName, months }) => {
 bot.onSubGift(({ broadcasterName, gifterName, userName }) => {
 	bot.say(broadcasterName, `AWOO @${gifterName}!! gifted a subscription to @${userName}!`);
 });
+
+bot.onConnect(() => console.log("woof woof it workin"));
