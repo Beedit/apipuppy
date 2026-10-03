@@ -6,6 +6,7 @@ import { brown } from "./commands/brown.js";
 import { gg } from "./commands/gg.js";
 import { gold } from "./commands/gold.js";
 import { fortune } from "./commands/fortune.js";
+import { isthisgoingtopb } from "./commands/isthisgoingtopb.js";
 
 const authProvider = new StaticAuthProvider(env.clientID, env.accessToken);
 
@@ -19,6 +20,7 @@ const bot = new Bot(
             createBotCommand("fortune", (_params, { reply }) => { fortune(reply) }),
             createBotCommand("gg", (_params, { reply }) => { gg(reply) }),
             createBotCommand("gold", (_params, { reply }) => { gold(reply) }),
+            createBotCommand("isthisgoingtopb", (_params, { reply }) => { isthisgoingtopb(reply) }),
         ]
     }
 )

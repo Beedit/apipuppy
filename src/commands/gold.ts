@@ -16,6 +16,12 @@ const goldMessages = [
   "averypuPpypgun *wags tail* or something idk",
   "averypuPpypgun guys--- im nervous--- its a glod...",
   "averypuPpypgun meow",
+  "averypuPpypgun puppy says PB TIME!",
+  "averypuPpypgun awoooo PB PB PB",
+  "averypuPpypgun awooo FREE PB PACE",
+  "averypuPpypgun awooooo HUGE TIME SAVE",
+  "averypuPpypgun awooo ur cooking :3c",
+  "averypuPpypgun puppy detects a gold split :3",
 ];
 
 const gold = (reply: Function) => {

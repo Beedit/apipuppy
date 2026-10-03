@@ -75,7 +75,7 @@ const pbLowMessages = [
   "averypuPpypgun bro dont even ask me",
 ];
 
-const pb = (reply: Function) => {
+const isthisgoingtopb = (reply: Function) => {
     const chance = Math.floor(Math.random() * 101);
     let verdict: string;
 
@@ -90,4 +90,4 @@ const pb = (reply: Function) => {
     reply(`${verdict} PB probability: ${chance}%`)
 }
 
-export { pb }
+export { isthisgoingtopb }
