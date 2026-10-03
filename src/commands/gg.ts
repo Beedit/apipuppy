@@ -1,4 +1,4 @@
-import { selectRandom } from "../utils/utils.ts"
+import { selectRandom } from "../utils/utils.js"
 
 const ggMessages = [
   "gg :3",

@@ -1,11 +1,11 @@
-import { StaticAuthProvider } from "npm:@twurple/auth";
-import { Bot, createBotCommand } from "npm:@twurple/easy-bot";
-import { woof } from "./commands/woof.ts";
-import { env } from "./utils/env.ts";
-import { brown } from "./commands/brown.ts";
-import { gg } from "./commands/gg.ts";
-import { gold } from "./commands/gold.ts";
-import { fortune } from "./commands/fortune.ts";
+import { StaticAuthProvider } from "@twurple/auth";
+import { Bot, createBotCommand } from "@twurple/easy-bot";
+import { woof } from "./commands/woof.js";
+import { env } from "./utils/env.js";
+import { brown } from "./commands/brown.js";
+import { gg } from "./commands/gg.js";
+import { gold } from "./commands/gold.js";
+import { fortune } from "./commands/fortune.js";
 
 const authProvider = new StaticAuthProvider(env.clientID, env.accessToken);
 

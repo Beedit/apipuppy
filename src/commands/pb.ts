@@ -1,4 +1,4 @@
-import { selectRandom } from "../utils/utils.ts";
+import { selectRandom } from "../utils/utils.js";
 
 const pbHighMessages = [
   "averypuPpypgun THE DOG HAS SPOKEN. THIS IS THE RUN.",
