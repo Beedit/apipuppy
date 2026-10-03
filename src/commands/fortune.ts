@@ -1,4 +1,4 @@
-import { selectRandom } from "../utils/utils.js"
+import { selectRandom } from "../utils/utils.ts"
 const fortuneMessages = [
   "🔮 awoooo... a PB approaches :3",
   "🔮 puppy sees a time save in your future",
