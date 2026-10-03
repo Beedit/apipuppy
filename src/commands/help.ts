@@ -1,4 +1,4 @@
-import type { ICommand } from "../utils/interface/ICommand.js";
+import type { ICommand } from "../interfaces/ICommand.js";
 import { commandListString } from "../utils/utils.js";
 
 const help: ICommand = {

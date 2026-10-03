@@ -1,5 +1,5 @@
 import { createBotCommand, type BotCommand } from "@twurple/easy-bot";
-import type { ICommand } from "./interface/ICommand.js";
+import type { ICommand } from "../interfaces/ICommand.js";
 import { brown } from "../commands/brown.js";
 import { fortune } from "../commands/fortune.js";
 import { gg } from "../commands/gg.js";
@@ -7,8 +7,9 @@ import { gold } from "../commands/gold.js";
 import { help } from "../commands/help.js";
 import { isthisgoingtopb } from "../commands/isthisgoingtopb.js";
 import { woof } from "../commands/woof.js";
+import { pb } from "../commands/pb.js";
 
-const commands = [ brown, gg, gold, fortune, isthisgoingtopb, woof, help ]
+const commands = [ brown, gg, gold, fortune, isthisgoingtopb, woof, help, pb ]
 
 /**
  * Selects a random item from a given list.
