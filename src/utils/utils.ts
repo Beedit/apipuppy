@@ -57,7 +57,7 @@ const helpCommandGeneration = (commands: ICommand[]) => {
     let string: string = "";
 
     commands.forEach((command) => {
-        string += ` ${command.name}`
+        string += ` !${command.name}`
     })
 
     return string;

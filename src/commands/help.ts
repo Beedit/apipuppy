@@ -3,7 +3,7 @@ import { commandListString } from "../utils/utils.js";
 
 const help: ICommand = {
     function: (reply: Function) => {
-        reply(`averypuPpypgun apipuppy commands: ${commandListString}`)
+        reply(`/me averypuPpypgun commands: ${commandListString}`)
     },
     name: "help"
 }

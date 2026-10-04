@@ -66,7 +66,7 @@ const pbLowMessages = [
   "averypuPpypgun awooo... we're a little cooked",
   "averypuPpypgun the dog is concerned but supportive",
   "averypuPpypgun erm... recoverable. probably.",
-  "averypuPpypgun ruff ruff... SAVE THE RUN",
+  "averypuPpypgun ruff ruff... NOT SAVEABLE",
   "averypuPpypgun puppy believes in miracles :3",
   "averypuPpypgun STREAMER WASHED. GIVE UP. PUPPY DEAD",
   "averypuPpypgun local puppy found dead in ditch. just reset lil vro",
@@ -89,10 +89,9 @@ const isthisgoingtopb: ICommand = {
         verdict = String(selectRandom(pbLowMessages))
     }
 
-    reply(`${verdict} PB probability: ${chance}%`)
+    reply(`/me ${verdict} | PB Chance: ${chance}%`)
   },
-  name: "isthisgoingtopb",
-
+  name: "pbchance",
   parameters: { aliases: ["willthispb", "pbchance"] }
 }
 
