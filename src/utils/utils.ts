@@ -10,6 +10,7 @@ import { woof } from "../commands/woof.js";
 import { pb } from "../commands/pb.js";
 import { lurk } from "../commands/lurk.js";
 
+/** Reference to all commands in the bot. */
 const commands = [ brown, gold, fortune, isthisgoingtopb, gg, woof, lurk, pb, help ]
 
 /**

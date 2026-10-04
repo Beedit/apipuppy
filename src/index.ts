@@ -14,11 +14,17 @@ const bot = new Bot({
 bot.onSub(({ broadcasterName, userName }) => {
 	bot.say(broadcasterName, `AWOO @${userName}!! subscribed to the channel!`);
 });
+
 bot.onResub(({ broadcasterName, userName, months }) => {
 	bot.say(broadcasterName, `AWOO @${userName}!! subscribed to the channel for a total of ${months} months!`);
 });
+
 bot.onSubGift(({ broadcasterName, gifterName, userName }) => {
 	bot.say(broadcasterName, `AWOO @${gifterName}!! gifted a subscription to @${userName}!`);
+});
+
+bot.onRaid(({ broadcasterName, userName, viewerCount }) => {
+	bot.say(broadcasterName, `AWOO!!! ${userName} is raiding with ${viewerCount} puppies!!!`);
 });
 
 bot.onConnect(() => console.log("woof woof it workin"));
