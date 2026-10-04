@@ -48,7 +48,8 @@ const fortune: ICommand = {
   function: (reply: Function) => {
     reply(selectRandom(fortuneMessages))
   },
-  name: "fortune"
+  name: "fortune",
+  description: "New fortune telling service in chat! Just run this command!!"
 }
 
 export { fortune }

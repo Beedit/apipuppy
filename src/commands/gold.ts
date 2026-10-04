@@ -29,7 +29,8 @@ const gold: ICommand = {
   function: (reply: Function) => {
     reply(selectRandom(goldMessages))
   },
-  name: "gold"
+  name: "gold",
+  description: "Celebrate a gold split with us!"
 }
 
 export { gold }

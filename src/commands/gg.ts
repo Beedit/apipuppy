@@ -41,6 +41,7 @@ const gg: ICommand = {
   function: (reply: Function) => {
     reply(selectRandom(ggMessages))
   },
-  name: "gg"
+  name: "gg",
+  description: "Say gg!"
 }
 export { gg }

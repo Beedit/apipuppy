@@ -4,7 +4,8 @@ const lurk: ICommand = {
     function: (reply: Function) => {
         reply(`/me is now lurking :3`)
     },
-    name: "lurk"
+    name: "lurk",
+    description: "Tells us that you are lurking :3"
 }
 
 export { lurk }

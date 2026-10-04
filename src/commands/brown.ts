@@ -30,7 +30,8 @@ const brown: ICommand = {
   function: (reply: Function) => {
     reply(selectRandom(brownMessages))
   },
-  name: "brown"
+  name: "brown",
+  description: "Celebrate a brown split with us!"
 }
 
 export { brown }

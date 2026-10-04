@@ -28,8 +28,8 @@ const selectRandom = <T> (list: T[]): T | undefined => {
 const createSoloCommand = (command: ICommand) => {
     if (!command.parameters) { command.parameters = {} }
 
-    return createBotCommand(command.name, (_params, { reply }) => {
-        command.function(reply)
+    return createBotCommand(command.name, (params, { reply }) => {
+        command.function(reply, params)
     }, command.parameters);
 }
 
@@ -68,4 +68,26 @@ const helpCommandGeneration = (commands: ICommand[]) => {
  */
 const commandListString = helpCommandGeneration(commands)
 
-export { selectRandom, createCommands, commandListString, commands }
+
+/**
+ * Returns the ordinal of the number passed to it.
+ * Only returns the ordinal, not the number.
+ * Ex: 2 => "nd" and not "2nd", 3 => "rd" and not "3rd".
+ * @param n Number to get the ordinal for
+ * @returns Ordinal as a string
+ */
+const getOrdinal = (n: number) => {
+    let ordinal = 'th';
+    if (n % 10 == 1 && n % 100 != 11) {
+        ordinal = 'st';
+    } else if (n % 10 == 2 && n % 100 != 12) {
+        ordinal = 'nd';
+    } else if (n % 10 == 3 && n % 100 != 13) {
+        ordinal = 'rd';
+    }
+
+    return ordinal;
+}
+
+
+export { selectRandom, createCommands, commandListString, commands, getOrdinal }

@@ -74,7 +74,8 @@ const woof: ICommand = {
     reply(selectRandom(woofMessages))
   },
   name: "woof",
-  parameters: { aliases: ["puppy", "dog"] }
+  parameters: { aliases: ["puppy", "dog"] },
+  description: "*awoo's at you*"
 }
 
 

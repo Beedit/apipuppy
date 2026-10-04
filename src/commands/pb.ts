@@ -3,9 +3,10 @@ import { getPBs } from "../utils/speedrunHelper.js";
 
 const pb: ICommand = {
     function: async (reply: Function) => {
-        reply(`${await getPBs()}`)
+        reply(`/me ${await getPBs()}`)
     },
-    name: "pb"
+    name: "pb",
+    description: "Retrieves avery's PB on the speedrun.com leaderboard!"
 }
 
 export { pb }
