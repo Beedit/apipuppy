@@ -8,8 +8,9 @@ import { help } from "../commands/help.js";
 import { isthisgoingtopb } from "../commands/isthisgoingtopb.js";
 import { woof } from "../commands/woof.js";
 import { pb } from "../commands/pb.js";
+import { lurk } from "../commands/lurk.js";
 
-const commands = [ brown, gg, gold, fortune, isthisgoingtopb, woof, help, pb ]
+const commands = [ brown, gold, fortune, isthisgoingtopb, gg, woof, lurk, pb, help ]
 
 /**
  * Selects a random item from a given list.
