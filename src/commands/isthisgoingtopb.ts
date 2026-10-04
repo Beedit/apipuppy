@@ -91,7 +91,9 @@ const isthisgoingtopb: ICommand = {
 
     reply(`${verdict} PB probability: ${chance}%`)
   },
-  name: "isthisgoingtopb"
+  name: "isthisgoingtopb",
+
+  parameters: { aliases: ["willthispb", "pbchance"] }
 }
 
 export { isthisgoingtopb }
