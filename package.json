@@ -10,15 +10,24 @@
     "dev": "npm run build && npm run start"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^2.1.0",
+    "@stylistic/eslint-plugin": "^5.10.0",
     "@types/axios": "^0.9.36",
     "@types/node": "^26.6.4",
-    "typescript": "^7.0.2"
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "jiti": "^2.7.0",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.71.1"
   },
   "dependencies": {
     "@ctroenv/core": "^1.5.0",
     "@ctroenv/node": "^1.1.2",
     "@twurple/easy-bot": "^8.2.0",
-    "axios": "^1.20.0"
+    "axios": "^1.20.0",
+    "obs-websocket-js": "^5.0.8"
   },
   "license": "MIT"
 }

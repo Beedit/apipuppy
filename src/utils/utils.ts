@@ -9,30 +9,33 @@ import { isthisgoingtopb } from "../commands/isthisgoingtopb.js";
 import { woof } from "../commands/woof.js";
 import { pb } from "../commands/pb.js";
 import { lurk } from "../commands/lurk.js";
+import { endStream } from "../commands/endstream.js";
+import { env } from "./env.js";
+import { obs } from "./obs.js";
 
 /** Reference to all commands in the bot. */
-const commands = [ brown, gold, fortune, isthisgoingtopb, gg, woof, lurk, pb, help ]
+const commands = [ brown, gold, fortune, isthisgoingtopb, gg, woof, lurk, pb, help, endStream ];
 
 /**
  * Selects a random item from a given list.
  * @param list List of items
  * @returns Random item from the list
  */
-const selectRandom = <T> (list: T[]): T | undefined => {
-    return list[Math.floor(Math.random() * list.length)];
-}
+const selectRandom = <T> (list: T[]): T=> {
+    return list[Math.floor(Math.random() * list.length)]!;
+};
 /**
  * Creates a single command. Helper function for createCommands. Should not be called.
  * @param command Command conforming to ICommand
  * @returns Registered command
  */
 const createSoloCommand = (command: ICommand) => {
-    if (!command.parameters) { command.parameters = {} }
+    if (!command.parameters) { command.parameters = {}; }
 
     return createBotCommand(command.name, (params, { reply }) => {
-        command.function(reply, params)
+        command.function(reply, params);
     }, command.parameters);
-}
+};
 
 /**
  * Creates commands from a list of ICommand interfaces.
@@ -40,14 +43,14 @@ const createSoloCommand = (command: ICommand) => {
  * @returns List of BotCommand to give to a bot.
  */
 const createCommands = (commands: ICommand[]) => {
-    let completedCommands: BotCommand[] = [];
+    const completedCommands: BotCommand[] = [];
 
     commands.forEach((command) => {
         completedCommands.push(createSoloCommand(command));
-    })
+    });
 
     return completedCommands;
-}
+};
 
 
 /**
@@ -59,15 +62,15 @@ const helpCommandGeneration = (commands: ICommand[]) => {
     let string: string = "";
 
     commands.forEach((command) => {
-        string += ` !${command.name}`
-    })
+        string += ` !${command.name}`;
+    });
 
     return string;
-}
+};
 /**
  * String of the command names for use in the help command.
  */
-const commandListString = helpCommandGeneration(commands)
+const commandListString = helpCommandGeneration(commands);
 
 
 /**
@@ -78,17 +81,22 @@ const commandListString = helpCommandGeneration(commands)
  * @returns Ordinal as a string
  */
 const getOrdinal = (n: number) => {
-    let ordinal = 'th';
+    let ordinal = "th";
     if (n % 10 == 1 && n % 100 != 11) {
-        ordinal = 'st';
+        ordinal = "st";
     } else if (n % 10 == 2 && n % 100 != 12) {
-        ordinal = 'nd';
+        ordinal = "nd";
     } else if (n % 10 == 3 && n % 100 != 13) {
-        ordinal = 'rd';
+        ordinal = "rd";
     }
 
     return ordinal;
-}
+};
+/**
+ * Initialises the bot. Currently only connects OBS, but more can be added in the future.
+ */
+const init = async () => {
+    await obs.connect(env.obsAddress, env.obsPassword, {});
+};
 
-
-export { selectRandom, createCommands, commandListString, commands, getOrdinal }
+export { selectRandom, createCommands, commandListString, commands, getOrdinal, init };
