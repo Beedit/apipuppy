@@ -24,7 +24,8 @@ bot.onSubGift(({ broadcasterName, gifterName, userName }) => {
 });
 
 bot.onRaid(({ broadcasterName, userName, viewerCount }) => {
-	bot.say(broadcasterName, `AWOO!!! ${userName} is raiding with ${viewerCount} puppies!!!`);
+	const pupText = (viewerCount <= 1) ? `puppy` : `puppies`;
+	bot.say(broadcasterName, `AWOO!!! ${userName} is raiding with ${viewerCount} ${pupText}!!!`);
 });
 
 bot.onConnect(() => console.log("woof woof it workin"));

@@ -19,11 +19,16 @@ const brownMessages = [
   "averypuPpypgun brooooooooooooo shush nobody needs to know",
   "averypuPpypgun just reset puppy",
   "averypuPpypgun sg hdagjajhgdjkagdfghjsakfdghjsgafhjgasfhjgha",
+  "averypuPpypgun split browner than my pants",
   "averypuPpypgun vro is ASS",
   "averypuPpypgun shit split shit split",
   "averypuPpypgun GOLD GOLD GO- oh... fuck",
   "averypuPpypgun how tf did u brown that",
   "averypuPpypgun tube ride moment",
+  "averypuPpypgun a split so good you need to wipe",
+  "averypuPpypgun streamer washed.. THEIR ASS",
+  "averypuPpypgun just watch mekelec_ instead atp...",
+  "averypuPpypgun not sure if streamer is supposed to use the splits as toilet paper",
 ];
 
 const brown: ICommand = {
