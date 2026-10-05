@@ -2,11 +2,11 @@ import type { ICommand } from "../interfaces/ICommand.js";
 import { getPBs } from "../utils/speedrunHelper.js";
 
 const pb: ICommand = {
-    function: async (reply: Function) => {
-        reply(`/me ${await getPBs()}`)
+    function: async (reply: (text: string) => void) => {
+        reply(`/me ${await getPBs()}`);
     },
     name: "pb",
     description: "Retrieves avery's PB on the speedrun.com leaderboard!"
-}
+};
 
-export { pb }
+export { pb };

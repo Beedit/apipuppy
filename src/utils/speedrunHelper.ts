@@ -11,7 +11,7 @@ const currDate = new Date();
  * @returns {string} String of PB
  */
 const getPBs = async () => {
-    const data = await axios.get(`${URL}/users/${USER_ID}/personal-bests?embed=game,category&game=${GAME_ID}`)
+    const data = await axios.get(`${URL}/users/${USER_ID}/personal-bests?embed=game,category&game=${GAME_ID}`);
 
     let pbMessage = "";
 
@@ -32,9 +32,9 @@ const getPBs = async () => {
     const msDiff = currDate.getTime() - submitDate.getTime();
     const daysDiff = Math.floor(msDiff / (1000*60*60*24));
 
-    pbMessage += `${runJSON.category.data.name}: ${formattedTime} | 🏆 ${runJSON.place}${getOrdinal(runJSON.place as number)} place | 📆 ${daysDiff} days ago | 🔗 ${runJSON.run.weblink}`
+    pbMessage += `${runJSON.category.data.name}: ${formattedTime} | 🏆 ${runJSON.place}${getOrdinal(runJSON.place as number)} place | 📆 ${daysDiff} days ago | 🔗 ${runJSON.run.weblink}`;
 
-    return pbMessage
-}
+    return pbMessage;
+};
 
-export { getPBs }
+export { getPBs };
