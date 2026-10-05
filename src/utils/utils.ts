@@ -9,9 +9,12 @@ import { isthisgoingtopb } from "../commands/isthisgoingtopb.js";
 import { woof } from "../commands/woof.js";
 import { pb } from "../commands/pb.js";
 import { lurk } from "../commands/lurk.js";
+import { endStream } from "../commands/endstream.js";
+import { env } from "./env.js";
+import { obs } from "./obs.js";
 
 /** Reference to all commands in the bot. */
-const commands = [ brown, gold, fortune, isthisgoingtopb, gg, woof, lurk, pb, help ];
+const commands = [ brown, gold, fortune, isthisgoingtopb, gg, woof, lurk, pb, help, endStream ];
 
 /**
  * Selects a random item from a given list.
@@ -89,6 +92,11 @@ const getOrdinal = (n: number) => {
 
     return ordinal;
 };
+/**
+ * Initialises the bot. Currently only connects OBS, but more can be added in the future.
+ */
+const init = async () => {
+    await obs.connect(env.obsAddress, env.obsPassword, {});
+};
 
-
-export { selectRandom, createCommands, commandListString, commands, getOrdinal };
+export { selectRandom, createCommands, commandListString, commands, getOrdinal, init };

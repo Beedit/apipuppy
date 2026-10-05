@@ -1,7 +1,7 @@
 import { StaticAuthProvider } from "@twurple/auth";
 import { Bot } from "@twurple/easy-bot";
 import { env } from "./utils/env.js";
-import { createCommands, commands } from "./utils/utils.js";
+import { createCommands, commands, init } from "./utils/utils.js";
 
 const authProvider = new StaticAuthProvider(env.clientID, env.accessToken);
 
@@ -28,4 +28,7 @@ bot.onRaid(({ broadcasterName, userName, viewerCount }) => {
     bot.say(broadcasterName, `AWOO!!! ${userName} is raiding with ${viewerCount} ${pupText}!!!`);
 });
 
-bot.onConnect(() => console.log("woof woof it workin"));
+bot.onConnect(async () => {
+    await init();
+    console.log("woof woof it workin");
+});
