@@ -12,5 +12,6 @@ const freak: ICommand = {
     },
     name: "freak",
     description: "Puppy gets freaky on it!"
+    parameters: { aliases: ["joi", "freaky"] },
 };
 export { freak };
