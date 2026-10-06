@@ -91,8 +91,8 @@ const isthisgoingtopb: ICommand = {
 
         reply(`/me ${verdict} | PB Chance: ${chance}%`);
     },
-    name: "isthisgoingtopb",
-    parameters: { aliases: ["willthispb", "pbchance"] },
+    name: "pbchance",
+    parameters: { aliases: ["willthispb", "isthisgoingtopb"] },
     description: "Calculates using advanced prediction mathematics (AKA Math.random()) to see if puppy will pb this run!"
 };
 

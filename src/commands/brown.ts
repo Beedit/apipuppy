@@ -36,6 +36,7 @@ const brown: ICommand = {
         reply(selectRandom(brownMessages));
     },
     name: "brown",
+    parameters: { aliases: ["poop", "shit"] },
     description: "Celebrate a brown split with us!"
 };
 
