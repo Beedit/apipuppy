@@ -11,6 +11,7 @@ const freak: ICommand = {
         reply(selectRandom(freakyMessages));
     },
     name: "freak",
+    parameters: { aliases: ["joi", "freaky"] },
     description: "Puppy gets freaky on it!"
 };
 export { freak };
