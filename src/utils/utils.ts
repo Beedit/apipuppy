@@ -9,12 +9,13 @@ import { isthisgoingtopb } from "../commands/isthisgoingtopb.js";
 import { woof } from "../commands/woof.js";
 import { pb } from "../commands/pb.js";
 import { lurk } from "../commands/lurk.js";
+import { freak } from "../commands/freak.js";
 import { endStream } from "../commands/endstream.js";
 import { env } from "./env.js";
 import { obs } from "./obs.js";
 
 /** Reference to all commands in the bot. */
-const commands = [ brown, gold, fortune, isthisgoingtopb, gg, woof, lurk, pb, help, endStream ];
+const commands = [ brown, gold, fortune, isthisgoingtopb, gg, woof, lurk, pb, freak, help, endStream ];
 
 /**
  * Selects a random item from a given list.
