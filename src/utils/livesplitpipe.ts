@@ -1,6 +1,6 @@
 import net from "net";
 
-const pipePath = "\\\\.\\pipe\\LiveSplit";
+const pipePath = "//./pipe/LiveSplit";
 const pipe = net.createConnection(pipePath);
 
 pipe.on("connect", () => {
