@@ -1,33 +1,13 @@
+import * as fs from "node:fs";
 import type { ICommand } from "../interfaces/ICommand.js";
 import { selectRandom } from "../utils/utils.js";
+import json5 from "json5";
 
-const goldMessages = [
-    "averypuPpypgun GOLD GOLD GOLD",
-    "averypuPpypgun glod btw",
-    "averypuPpypgun Goldge",
-    "averypuPpypgun CHEERS TO THAT",
-    "averypuPpypgun a gold wont save u buddy",
-    "averypuPpypgun NO RESET. GOLD GOLD. YTES YEYDI UWsufiasu ifhahfu",
-    "averypuPpypgun AWOOOOOOOOOOOOOOOOOOOO GOOD PUPPY",
-    "averypuPpypgun bottoms up",
-    "averypuPpypgun tequilaaaaa",
-    "averypuPpypgun wr pace with that glod",
-    "averypuPpypgun streamer UNWASHED!!",
-    "averypuPpypgun wooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooof",
-    "averypuPpypgun *wags tail* or something idk",
-    "averypuPpypgun guys--- im nervous--- its a glod...",
-    "averypuPpypgun meow",
-    "averypuPpypgun puppy says PB TIME!",
-    "averypuPpypgun awoooo PB PB PB",
-    "averypuPpypgun awooo FREE PB PACE",
-    "averypuPpypgun awooooo HUGE TIME SAVE",
-    "averypuPpypgun awooo ur cooking :3c",
-    "averypuPpypgun puppy detects a gold split :3",
-];
+const messages = json5.parse(fs.readFileSync("./src/data/messages.json5", "utf8"));
 
 const gold: ICommand = {
     function: (reply: (text: string) => void) => {
-        reply(selectRandom(goldMessages));
+        reply(selectRandom(messages.gold));
     },
     name: "gold",
     description: "Celebrate a gold split with us!"
