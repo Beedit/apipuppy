@@ -8,7 +8,7 @@ const authProvider = new StaticAuthProvider(env.clientID, env.accessToken);
 const bot = new Bot({
     authProvider,
     channel: "averypuppy",
-    commands: createCommands(commands)
+    commands: createCommands(commands),
 });
 
 bot.onSub(({ broadcasterName, userName }) => {

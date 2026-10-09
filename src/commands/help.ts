@@ -6,7 +6,7 @@ const help: ICommand = {
         if (params[0]) {
             const strCommand = params[0];
             let command: ICommand = help;
-            commands.forEach(cmd => {
+            commands.forEach((cmd) => {
                 if (cmd.name == strCommand) {
                     command = cmd;
                     return;
@@ -19,7 +19,7 @@ const help: ICommand = {
         }
     },
     name: "help",
-    description: "A help command. Use !help <command> to work out what a command does or just !help for a list of commands"
+    description: "A help command. Use !help <command> to work out what a command does or just !help for a list of commands",
 };
 
 export { help };

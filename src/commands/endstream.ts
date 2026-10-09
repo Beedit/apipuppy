@@ -12,7 +12,7 @@ const endStream: ICommand = {
         }
     },
     name: "stopstreaming",
-    description: "1/10000 chance to end stream outright. "
+    description: "1/10000 chance to end stream outright. ",
 };
 
-export { endStream }; 
+export { endStream };

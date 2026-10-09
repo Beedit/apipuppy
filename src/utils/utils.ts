@@ -16,14 +16,14 @@ import { obs } from "./obs.js";
 import { wheatley } from "../commands/wheatley.js";
 
 /** Reference to all commands in the bot. */
-const commands = [ brown, gold, fortune, isthisgoingtopb, gg, wheatley, woof, lurk, pb, freak, help, endStream ];
+const commands = [brown, gold, fortune, isthisgoingtopb, gg, wheatley, woof, lurk, pb, freak, help, endStream];
 
 /**
  * Selects a random item from a given list.
  * @param list List of items
  * @returns Random item from the list
  */
-const selectRandom = <T> (list: T[]): T=> {
+const selectRandom = <T> (list: T[]): T => {
     return list[Math.floor(Math.random() * list.length)]!;
 };
 /**
@@ -32,7 +32,9 @@ const selectRandom = <T> (list: T[]): T=> {
  * @returns Registered command
  */
 const createSoloCommand = (command: ICommand) => {
-    if (!command.parameters) { command.parameters = {}; }
+    if (!command.parameters) {
+        command.parameters = {};
+    }
 
     return createBotCommand(command.name, (params, { reply }) => {
         command.function(reply, params);
@@ -54,7 +56,6 @@ const createCommands = (commands: ICommand[]) => {
     return completedCommands;
 };
 
-
 /**
  * Generates a string of the command names for use in the help command.
  * @param commands List of ICommands to be included in the help command
@@ -73,7 +74,6 @@ const helpCommandGeneration = (commands: ICommand[]) => {
  * String of the command names for use in the help command.
  */
 const commandListString = helpCommandGeneration(commands);
-
 
 /**
  * Returns the ordinal of the number passed to it.
@@ -94,6 +94,7 @@ const getOrdinal = (n: number) => {
 
     return ordinal;
 };
+
 /**
  * Initialises the bot. Currently only connects OBS, but more can be added in the future.
  */
