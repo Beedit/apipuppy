@@ -9,8 +9,6 @@ export default defineConfig([
     {
         ignores: ["**/dist/**/*"],
     },
-
-    stylistic.configs.recommended,
     {
         files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
         plugins: {
@@ -29,13 +27,16 @@ export default defineConfig([
             "@stylistic/array-bracket-spacing": ["warn", "never", { singleValue: false }],
             "@stylistic/semi-style": ["warn", "last"],
         },
-        extends: ["js/recommended"],
+        extends: [
+            "js/recommended",
+            tseslint.configs.recommended,
+            stylistic.configs.recommended,
+
+        ],
         languageOptions: {
             globals: globals.node,
         },
     },
-
-    tseslint.configs.recommended,
 
     {
         files: ["**/*.json"],

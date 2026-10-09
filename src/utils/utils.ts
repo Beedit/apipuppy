@@ -32,9 +32,7 @@ const selectRandom = <T> (list: T[]): T => {
  * @returns Registered command
  */
 const createSoloCommand = (command: ICommand) => {
-    if (!command.parameters) {
-        command.parameters = {};
-    }
+    command.parameters ??= {};
 
     return createBotCommand(command.name, (params, { reply }) => {
         command.function(reply, params);
