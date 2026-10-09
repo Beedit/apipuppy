@@ -6,35 +6,52 @@ const USER_ID = "j96647rj";
 const GAME_ID = "om1mw4d2";
 const currDate = new Date();
 
+type RunData = {
+    data: Array<{
+        place: number
+        run: {
+            weblink: string
+            times: {
+                primary_t: number
+            }
+            submitted: string
+        }
+        category: {
+            data: {
+                name: string
+            }
+        }
+    }>
+};
+
 /**
  * Gets PBs from speedrun.com
  * @returns {string} String of PB
  */
 const getPBs = async () => {
-    const data = await axios.get(`${URL}/users/${USER_ID}/personal-bests?embed=game,category&game=${GAME_ID}`);
+    const data = await axios.get<RunData>(`${URL}/users/${USER_ID}/personal-bests?embed=category&game=${GAME_ID}`);
+    const runJSON = data.data.data[0];
+    if (runJSON) {
+        let pbMessage = "";
 
-    let pbMessage = "";
+        const submitDate = new Date(runJSON.run.submitted);
 
-    const runJSON = data.data.data.reduce((min: { run: { times: { primary_t: number } } }, curr: { run: { times: { primary_t: number } } }) =>
-        curr.run.times.primary_t < min.run.times.primary_t ? curr : min,
-    );
+        const time = runJSON.run.times.primary_t;
 
-    const submitDate = new Date(runJSON.run.submitted);
+        const hours = Math.floor(time / 3600);
+        const mins = Math.floor((time % 3600) / 60);
+        const secs = (time % 60).toFixed(3);
 
-    const time = runJSON.run.times.primary_t;
+        const formattedTime = `${hours}h ${mins}m ${secs}s`;
 
-    const hours = Math.floor(time / 3600);
-    const mins = Math.floor((time % 3600) / 60);
-    const secs = (time % 60).toFixed(3);
+        const msDiff = currDate.getTime() - submitDate.getTime();
+        const daysDiff = Math.floor(msDiff / (1000 * 60 * 60 * 24));
 
-    const formattedTime = `${hours}h ${mins}m ${secs}s`;
+        pbMessage += `${runJSON.category.data.name}: ${formattedTime} | 🏆 ${runJSON.place}${getOrdinal(runJSON.place)} place | 📆 ${daysDiff} days ago | 🔗 ${runJSON.run.weblink}`;
 
-    const msDiff = currDate.getTime() - submitDate.getTime();
-    const daysDiff = Math.floor(msDiff / (1000 * 60 * 60 * 24));
-
-    pbMessage += `${runJSON.category.data.name}: ${formattedTime} | 🏆 ${runJSON.place}${getOrdinal(runJSON.place as number)} place | 📆 ${daysDiff} days ago | 🔗 ${runJSON.run.weblink}`;
-
-    return pbMessage;
+        return pbMessage;
+    }
+    return "";
 };
 
 export { getPBs };
