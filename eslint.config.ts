@@ -30,6 +30,7 @@ export default defineConfig([
         extends: [
             "js/recommended",
             tseslint.configs.recommendedTypeChecked,
+            tseslint.configs.stylisticTypeChecked,
             stylistic.configs.recommended,
 
         ],

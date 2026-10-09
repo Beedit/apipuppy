@@ -8,14 +8,14 @@ const isthisgoingtopb: ICommand = {
         let verdict: string;
 
         if (chance >= 90) {
-            verdict = String(selectRandom(messages.pbHigh));
+            verdict = selectRandom(messages.pbHigh);
         } else if (chance >= 50) {
-            verdict = String(selectRandom(messages.pbMed));
+            verdict = selectRandom(messages.pbMed);
         } else {
-            verdict = String(selectRandom(messages.pbLow));
+            verdict = selectRandom(messages.pbLow);
         }
 
-        await context.reply(`/me ${verdict} | PB Chance: ${chance}%`);
+        await context.reply(`/me ${verdict} | PB Chance: ${String(chance)}%`);
     },
     name: "pbchance",
     parameters: { aliases: ["willthispb", "isthisgoingtopb"] },

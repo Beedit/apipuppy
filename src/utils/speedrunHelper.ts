@@ -6,8 +6,8 @@ const USER_ID = "j96647rj";
 const GAME_ID = "om1mw4d2";
 const currDate = new Date();
 
-type RunData = {
-    data: Array<{
+interface RunData {
+    data: {
         place: number
         run: {
             weblink: string
@@ -21,8 +21,8 @@ type RunData = {
                 name: string
             }
         }
-    }>
-};
+    }[]
+}
 
 /**
  * Gets PBs from speedrun.com

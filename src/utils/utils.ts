@@ -60,7 +60,7 @@ const createCommands = (commands: ICommand[]) => {
  * @returns String in the format "commandName1 commandName2 [...]"
  */
 const helpCommandGeneration = (commands: ICommand[]) => {
-    let string: string = "";
+    let string = "";
 
     commands.forEach((command) => {
         string += ` !${command.name}`;
