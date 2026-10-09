@@ -3,8 +3,8 @@ import { selectRandom } from "../utils/utils.js";
 import messages from "../data/messages.json" with { type: "json" };
 
 const gold: ICommand = {
-    function: (reply: (text: string) => void) => {
-        reply(selectRandom(messages.gold));
+    function: async (context) => {
+        await context.reply(selectRandom(messages.gold));
     },
     name: "gold",
     description: "Celebrate a gold split with us!",

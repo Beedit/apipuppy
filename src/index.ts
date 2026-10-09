@@ -12,23 +12,23 @@ const bot = new Bot({
 });
 
 bot.onSub(({ broadcasterName, userName }) => {
-    bot.say(broadcasterName, `AWOO @${userName}!! subscribed to the channel!`);
+    void bot.say(broadcasterName, `AWOO @${userName}!! subscribed to the channel!`);
 });
 
 bot.onResub(({ broadcasterName, userName, months }) => {
-    bot.say(broadcasterName, `AWOO @${userName}!! subscribed to the channel for a total of ${months} months!`);
+    void bot.say(broadcasterName, `AWOO @${userName}!! subscribed to the channel for a total of ${months} months!`);
 });
 
 bot.onSubGift(({ broadcasterName, gifterName, userName }) => {
-    bot.say(broadcasterName, `AWOO @${gifterName}!! gifted a subscription to @${userName}!`);
+    void bot.say(broadcasterName, `AWOO @${gifterName}!! gifted a subscription to @${userName}!`);
 });
 
 bot.onRaid(({ broadcasterName, userName, viewerCount }) => {
     const pupText = (viewerCount <= 1) ? "puppy" : "puppies";
-    bot.say(broadcasterName, `AWOO!!! ${userName} is raiding with ${viewerCount} ${pupText}!!!`);
+    void bot.say(broadcasterName, `AWOO!!! ${userName} is raiding with ${viewerCount} ${pupText}!!!`);
 });
 
-bot.onConnect(async () => {
-    await init();
+bot.onConnect(() => {
+    void init();
     console.log("woof woof it workin");
 });

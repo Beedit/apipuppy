@@ -2,7 +2,7 @@ import type { ICommand } from "../interfaces/ICommand.js";
 import { commandListString, commands } from "../utils/utils.js";
 
 const help: ICommand = {
-    function: (reply: (text: string) => void, params: string[]) => {
+    function: async (context, params: string[]) => {
         if (params[0]) {
             const strCommand = params[0];
             let command: ICommand = help;
@@ -13,9 +13,9 @@ const help: ICommand = {
                 }
             });
 
-            reply(`/me averypuPpypgun ${command.name}: ${command.description}`);
+            await context.reply(`/me averypuPpypgun ${command.name}: ${command.description}`);
         } else {
-            reply(`/me averypuPpypgun commands: ${commandListString}`);
+            await context.reply(`/me averypuPpypgun commands: ${commandListString}`);
         }
     },
     name: "help",

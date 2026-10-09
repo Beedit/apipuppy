@@ -3,7 +3,7 @@ import { selectRandom } from "../utils/utils.js";
 import messages from "../data/messages.json" with { type: "json" };
 
 const isthisgoingtopb: ICommand = {
-    function: (reply: (text: string) => void) => {
+    function: async (context) => {
         const chance = Math.floor(Math.random() * 101);
         let verdict: string;
 
@@ -15,7 +15,7 @@ const isthisgoingtopb: ICommand = {
             verdict = String(selectRandom(messages.pbLow));
         }
 
-        reply(`/me ${verdict} | PB Chance: ${chance}%`);
+        await context.reply(`/me ${verdict} | PB Chance: ${chance}%`);
     },
     name: "pbchance",
     parameters: { aliases: ["willthispb", "isthisgoingtopb"] },

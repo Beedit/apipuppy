@@ -1,3 +1,5 @@
+import type { BotCommandContext } from "@twurple/easy-bot";
+
 /**
  * Command interface to ensure that it can be registered correctly.
  * @function function Function to be run
@@ -7,7 +9,7 @@
  */
 export interface ICommand {
     /** Function to be run */
-    function: (reply: (text: string) => void, parameters: string[]) => void
+    function: (context: BotCommandContext, parameters: string[]) => Promise<void>
     /** Name of the command */
     name: string
     /** Parameters of the command */

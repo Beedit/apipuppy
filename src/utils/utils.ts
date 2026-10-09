@@ -34,8 +34,8 @@ const selectRandom = <T> (list: T[]): T => {
 const createSoloCommand = (command: ICommand) => {
     command.parameters ??= {};
 
-    return createBotCommand(command.name, (params, { reply }) => {
-        command.function(reply, params);
+    return createBotCommand(command.name, async (params, context) => {
+        await command.function(context, params);
     }, command.parameters);
 };
 

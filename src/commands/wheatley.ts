@@ -3,8 +3,8 @@ import { selectRandom } from "../utils/utils.js";
 import messages from "../data/messages.json" with { type: "json" };
 
 const wheatley: ICommand = {
-    function: (reply: (text: string) => void) => {
-        reply(selectRandom(messages.wheatley));
+    function: async (context) => {
+        await context.reply(selectRandom(messages.wheatley));
     },
     name: "wheatley",
     parameters: { aliases: ["wheat", "wheatle"] },

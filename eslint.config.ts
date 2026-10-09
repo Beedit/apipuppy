@@ -29,12 +29,15 @@ export default defineConfig([
         },
         extends: [
             "js/recommended",
-            tseslint.configs.recommended,
+            tseslint.configs.recommendedTypeChecked,
             stylistic.configs.recommended,
 
         ],
         languageOptions: {
             globals: globals.node,
+            parserOptions: {
+                projectService: true,
+            },
         },
     },
 

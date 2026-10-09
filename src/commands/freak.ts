@@ -3,8 +3,8 @@ import { selectRandom } from "../utils/utils.js";
 import messages from "../data/messages.json" with { type: "json" };
 
 const freak: ICommand = {
-    function: (reply: (text: string) => void) => {
-        reply(selectRandom(messages.freaky));
+    function: async (context) => {
+        await context.reply(selectRandom(messages.freaky));
     },
     name: "freak",
     parameters: { aliases: ["joi", "freaky"] },
