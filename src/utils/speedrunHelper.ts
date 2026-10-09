@@ -15,8 +15,8 @@ const getPBs = async () => {
 
     let pbMessage = "";
 
-    const runJSON = data.data.data.reduce((min: { run: { times: { primary_t: number; }; }; },curr: { run: { times: { primary_t: number; }; }; }) => 
-        curr.run.times.primary_t < min.run.times.primary_t ? curr : min
+    const runJSON = data.data.data.reduce((min: { run: { times: { primary_t: number } } }, curr: { run: { times: { primary_t: number } } }) =>
+        curr.run.times.primary_t < min.run.times.primary_t ? curr : min,
     );
 
     const submitDate = new Date(runJSON.run.submitted);
@@ -30,7 +30,7 @@ const getPBs = async () => {
     const formattedTime = `${hours}h ${mins}m ${secs}s`;
 
     const msDiff = currDate.getTime() - submitDate.getTime();
-    const daysDiff = Math.floor(msDiff / (1000*60*60*24));
+    const daysDiff = Math.floor(msDiff / (1000 * 60 * 60 * 24));
 
     pbMessage += `${runJSON.category.data.name}: ${formattedTime} | 🏆 ${runJSON.place}${getOrdinal(runJSON.place as number)} place | 📆 ${daysDiff} days ago | 🔗 ${runJSON.run.weblink}`;
 

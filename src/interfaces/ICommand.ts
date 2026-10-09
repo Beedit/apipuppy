@@ -7,11 +7,11 @@
  */
 export interface ICommand {
     /** Function to be run */
-    function: (reply: (text: string) => void, parameters: string[]) => void,
+    function: (reply: (text: string) => void, parameters: string[]) => void
     /** Name of the command */
-    name: string,
+    name: string
     /** Parameters of the command */
-    parameters?: object,
+    parameters?: object
     /** A description of the command */
     description: string
 }

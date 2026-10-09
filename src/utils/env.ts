@@ -5,7 +5,7 @@ export const env = defineEnv({
     clientID: string(),
     accessToken: string(),
     obsAddress: string().url(),
-    obsPassword: string().default("")
+    obsPassword: string().default(""),
 },
 {
     source: loadEnv(),
