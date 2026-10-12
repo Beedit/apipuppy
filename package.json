@@ -6,6 +6,9 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "npx --package typescript tsc --project ./",
+    "cleanBuild": "run-script-os",
+    "cleanBuild:linux:darwin": "rm -rf dist && npx --package typescript tsc --project ./",
+    "cleanBuild:win32": "rmdir /Q /S dist && npx --package typescript tsc --project ./",
     "start": "node dist/index.js",
     "dev": "npm run build && npm run start"
   },
@@ -19,6 +22,7 @@
     "eslint": "^10.12.0",
     "globals": "^17.13.0",
     "jiti": "^2.7.0",
+    "run-script-os": "^1.1.6",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
     "typescript-eslint": "^8.71.1"
   },
