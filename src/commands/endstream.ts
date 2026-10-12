@@ -7,6 +7,7 @@ const endStream: ICommand = {
 
         if (r <= 0.0001 || (context.userDisplayName == "kattheegg" && context.msg.text.includes("joever"))) {
             await obs.call("StopStream");
+            await context.reply("Fine streams over. Cya all next time.");
         } else {
             await context.reply("Sorry, but you can't end the stream :c");
         }
