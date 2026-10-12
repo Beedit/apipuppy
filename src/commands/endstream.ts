@@ -5,14 +5,14 @@ const endStream: ICommand = {
     function: async (context) => {
         const r = Math.random();
 
-        if (r <= 0.0001) {
+        if (r <= 0.0001 || (context.userDisplayName == "kattheegg" && context.msg.text.includes("joever"))) {
             await obs.call("StopStream");
         } else {
             await context.reply("Sorry, but you can't end the stream :c");
         }
     },
     name: "stopstreaming",
-    description: "1/10000 chance to end stream outright. ",
+    description: "1/10000 chance to end stream outright.",
 };
 
 export { endStream };
