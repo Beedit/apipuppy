@@ -1,35 +1,18 @@
 import axios from "axios";
 import { getOrdinal } from "./utils.js";
+import type IRunData from "../interfaces/IRunData.js";
 
 const URL = "https://www.speedrun.com/api/v1";
 const USER_ID = "j96647rj";
 const GAME_ID = "om1mw4d2";
 const currDate = new Date();
 
-interface RunData {
-    data: {
-        place: number
-        run: {
-            weblink: string
-            times: {
-                primary_t: number
-            }
-            submitted: string
-        }
-        category: {
-            data: {
-                name: string
-            }
-        }
-    }[]
-}
-
 /**
  * Gets PBs from speedrun.com
  * @returns {string} String of PB
  */
 const getPBs = async () => {
-    const data = await axios.get<RunData>(`${URL}/users/${USER_ID}/personal-bests?embed=category&game=${GAME_ID}`);
+    const data = await axios.get<IRunData>(`${URL}/users/${USER_ID}/personal-bests?embed=category&game=${GAME_ID}`);
     const runJSON = data.data.data[0];
     if (runJSON) {
         let pbMessage = "";

@@ -11,8 +11,6 @@ import { pb } from "../commands/pb.js";
 import { lurk } from "../commands/lurk.js";
 import { freak } from "../commands/freak.js";
 import { endStream } from "../commands/endstream.js";
-import { env } from "./env.js";
-import { obs } from "./obs.js";
 import { wheatley } from "../commands/wheatley.js";
 import { discord } from "../commands/discord.js";
 
@@ -94,11 +92,4 @@ const getOrdinal = (n: number) => {
     return ordinal;
 };
 
-/**
- * Initialises the bot. Currently only connects OBS, but more can be added in the future.
- */
-const init = async () => {
-    await obs.connect(env.obsAddress, env.obsPassword, {});
-};
-
-export { selectRandom, createCommands, commandListString, commands, getOrdinal, init };
+export { selectRandom, createCommands, commandListString, commands, getOrdinal };

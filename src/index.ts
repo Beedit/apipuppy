@@ -1,34 +1,12 @@
-import { StaticAuthProvider } from "@twurple/auth";
-import { Bot } from "@twurple/easy-bot";
 import { env } from "./utils/env.js";
-import { createCommands, commands, init } from "./utils/utils.js";
+import { bot } from "./utils/bot.js";
+import { obs } from "./utils/obs.js";
 
-const authProvider = new StaticAuthProvider(env.clientID, env.accessToken);
-
-const bot = new Bot({
-    authProvider,
-    channel: "averypuppy",
-    commands: createCommands(commands),
-});
-
-bot.onSub(({ broadcasterName, userName }) => {
-    void bot.say(broadcasterName, `AWOO @${userName}!! subscribed to the channel!`);
-});
-
-bot.onResub(({ broadcasterName, userName, months }) => {
-    void bot.say(broadcasterName, `AWOO @${userName}!! subscribed to the channel for a total of ${months} months!`);
-});
-
-bot.onSubGift(({ broadcasterName, gifterName, userName }) => {
-    void bot.say(broadcasterName, `AWOO @${gifterName}!! gifted a subscription to @${userName}!`);
-});
-
-bot.onRaid(({ broadcasterName, userName, viewerCount }) => {
-    const pupText = (viewerCount <= 1) ? "puppy" : "puppies";
-    void bot.say(broadcasterName, `AWOO!!! ${userName} is raiding with ${viewerCount} ${pupText}!!!`);
+await obs.connect(env.obsAddress, env.obsPassword, {}).then(async () => {
+    console.log("OBS Connected!");
+    await bot.join(env.username);
 });
 
 bot.onConnect(() => {
-    void init();
     console.log("woof woof it workin");
 });
