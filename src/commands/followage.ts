@@ -43,7 +43,7 @@ const followage: ICommand = {
         }
     },
     name: "followage",
-    description: "Tells you your followage!!",
+    description: "Tells you your follow age!!",
 };
 
 export { followage };
