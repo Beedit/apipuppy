@@ -1,10 +1,19 @@
 import { env } from "./utils/env.js";
 import { bot } from "./utils/bot.js";
-import { obs } from "./utils/obs.js";
+import { obs, obsStatus } from "./utils/obs.js";
+import { logger } from "./utils/utils.js";
 
 await obs.connect(env.obsAddress, env.obsPassword, {}).then(() => {
-    console.log("OBS Connected!");
+    logger.info("OBS Connected!");
     bot.onConnect(() => {
-        console.log("woof woof it workin");
+        logger.info("woof woof it workin");
+    });
+}).catch(() => {
+    logger.error("OBS connection failed");
+    logger.warn("OBS Commands are disabled");
+    obsStatus.connectedStatus = false;
+
+    bot.onConnect(() => {
+        logger.info("woof woof it workin");
     });
 });

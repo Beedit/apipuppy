@@ -11,7 +11,7 @@ const auth = () => {
 const bot = new Bot({
     authProvider: auth(),
     channel: env.channel,
-    commands: createCommands(commands),
+    commands: createCommands(commands()),
 });
 
 const apiClient = new ApiClient({ authProvider: auth() });

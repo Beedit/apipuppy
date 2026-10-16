@@ -1,7 +1,7 @@
-import type { ICommand } from "../interfaces/ICommand.js";
+import type { Command } from "../types/interfaces/Command.js";
 import { apiClient } from "../utils/bot.js";
 
-const followage: ICommand = {
+export const followage: Command = {
     function: async (context) => {
         try {
             const { data } = await apiClient.channels.getChannelFollowers(
@@ -45,5 +45,3 @@ const followage: ICommand = {
     name: "followage",
     description: "Tells you your follow age!!",
 };
-
-export { followage };

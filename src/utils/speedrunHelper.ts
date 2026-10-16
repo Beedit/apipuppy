@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getOrdinal } from "./utils.js";
-import type IRunData from "../interfaces/IRunData.js";
+import type IRunData from "../types/interfaces/RunData.js";
 
 const URL = "https://www.speedrun.com/api/v1";
 const USER_ID = "j96647rj";

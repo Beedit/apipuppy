@@ -7,7 +7,7 @@ import type { BotCommandContext } from "@twurple/easy-bot";
  * @member {object} parameters Parameters of the command (Optional)
  * @member {string} description A description of the command
  */
-export interface ICommand {
+export interface Command {
     /** Function to be run */
     function: (context: BotCommandContext, parameters: string[]) => Promise<void>
     /** Name of the command */

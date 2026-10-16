@@ -1,5 +1,5 @@
 import { createBotCommand, type BotCommand } from "@twurple/easy-bot";
-import type { ICommand } from "../interfaces/ICommand.js";
+import type { Command } from "../types/interfaces/Command.js";
 import { brown } from "../commands/brown.js";
 import { fortune } from "../commands/fortune.js";
 import { gg } from "../commands/gg.js";
@@ -15,9 +15,31 @@ import { wheatley } from "../commands/wheatley.js";
 import { discord } from "../commands/discord.js";
 import { followage } from "../commands/followage.js";
 import { code } from "../commands/source.js";
+import { Logger } from "tslog";
+import { obsStatus } from "./obs.js";
+
+/**
+ * Logger for program.
+ */
+const logger = new Logger({
+    minLevel: "INFO",
+    stack: {
+        capture: "off",
+    },
+    name: "ApiPuppy",
+    pretty: {
+        template: "{{dateIsoStr}} {{logLevelName}}\t{{name}} >> ",
+    },
+});
+
+const commandList = [discord, followage, brown, gold, fortune, isthisgoingtopb, gg, wheatley, woof, lurk, pb, freak, help, code];
+const obsCommandList = [endStream];
 
 /** Reference to all commands in the bot. */
-const commands = [discord, followage, brown, gold, fortune, isthisgoingtopb, gg, wheatley, woof, lurk, pb, freak, help, endStream, code];
+const commands = (): Command[] => {
+    return (obsStatus.connectedStatus) ? commandList.concat(obsCommandList) : commandList;
+};
+
 /**
  * Selects a random item from a given list.
  * @param list List of items
@@ -26,12 +48,13 @@ const commands = [discord, followage, brown, gold, fortune, isthisgoingtopb, gg,
 const selectRandom = <T> (list: T[]): T => {
     return list[Math.floor(Math.random() * list.length)]!;
 };
+
 /**
  * Creates a single command. Helper function for createCommands. Should not be called.
  * @param command Command conforming to ICommand
  * @returns Registered command
  */
-const createSoloCommand = (command: ICommand) => {
+const createSoloCommand = (command: Command) => {
     command.parameters ??= {};
 
     return createBotCommand(command.name, async (params, context) => {
@@ -44,7 +67,7 @@ const createSoloCommand = (command: ICommand) => {
  * @param commands A list of ICommands to be created.
  * @returns List of BotCommand to give to a bot.
  */
-const createCommands = (commands: ICommand[]) => {
+const createCommands = (commands: Command[]) => {
     const completedCommands: BotCommand[] = [];
 
     commands.forEach((command) => {
@@ -59,7 +82,7 @@ const createCommands = (commands: ICommand[]) => {
  * @param commands List of ICommands to be included in the help command
  * @returns String in the format "commandName1 commandName2 [...]"
  */
-const helpCommandGeneration = (commands: ICommand[]) => {
+const helpCommandGeneration = (commands: Command[]) => {
     let string = "";
 
     commands.forEach((command) => {
@@ -68,10 +91,11 @@ const helpCommandGeneration = (commands: ICommand[]) => {
 
     return string;
 };
+
 /**
  * String of the command names for use in the help command.
  */
-const commandListString = helpCommandGeneration(commands);
+const commandListString = helpCommandGeneration(commands());
 
 /**
  * Returns the ordinal of the number passed to it.
@@ -93,4 +117,4 @@ const getOrdinal = (n: number) => {
     return ordinal;
 };
 
-export { selectRandom, createCommands, commandListString, commands, getOrdinal };
+export { selectRandom, createCommands, commandListString, commands, getOrdinal, logger };

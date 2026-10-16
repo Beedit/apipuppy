@@ -1,8 +1,8 @@
-import type { ICommand } from "../interfaces/ICommand.js";
+import type { Command } from "../types/interfaces/Command.js";
 import { selectRandom } from "../utils/utils.js";
 import messages from "../data/messages.json" with { type: "json" };
 
-const wheatley: ICommand = {
+export const wheatley: Command = {
     function: async (context) => {
         await context.reply(selectRandom(messages.wheatley));
     },
@@ -10,4 +10,3 @@ const wheatley: ICommand = {
     parameters: { aliases: ["wheat", "wheatle"] },
     description: "Say a random quote from Wheatley!",
 };
-export { wheatley };

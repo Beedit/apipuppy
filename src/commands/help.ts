@@ -1,12 +1,12 @@
-import type { ICommand } from "../interfaces/ICommand.js";
+import type { Command } from "../types/interfaces/Command.js";
 import { commandListString, commands } from "../utils/utils.js";
 
-const help: ICommand = {
+export const help: Command = {
     function: async (context, params: string[]) => {
         if (params[0]) {
             const strCommand = params[0];
-            let command: ICommand = help;
-            commands.forEach((cmd) => {
+            let command: Command = help;
+            commands().forEach((cmd: Command) => {
                 if (cmd.name == strCommand) {
                     command = cmd;
                     return;
@@ -21,5 +21,3 @@ const help: ICommand = {
     name: "help",
     description: "A help command. Use !help <command> to work out what a command does or just !help for a list of commands",
 };
-
-export { help };

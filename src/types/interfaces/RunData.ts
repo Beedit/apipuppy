@@ -1,4 +1,4 @@
-export default interface IRunData {
+export default interface RunData {
     data: {
         place: number
         run: {

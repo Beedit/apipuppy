@@ -1,8 +1,8 @@
-import type { ICommand } from "../interfaces/ICommand.js";
+import type { Command } from "../types/interfaces/Command.js";
 import { selectRandom } from "../utils/utils.js";
 import messages from "../data/messages.json" with { type: "json" };
 
-const isthisgoingtopb: ICommand = {
+export const isthisgoingtopb: Command = {
     function: async (context) => {
         const chance = Math.floor(Math.random() * 101);
         let verdict: string;
@@ -21,5 +21,3 @@ const isthisgoingtopb: ICommand = {
     parameters: { aliases: ["willthispb", "isthisgoingtopb"] },
     description: "Calculates using advanced prediction mathematics (AKA Math.random()) to see if puppy will pb this run!",
 };
-
-export { isthisgoingtopb };

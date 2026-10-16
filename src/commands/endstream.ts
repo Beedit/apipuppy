@@ -1,7 +1,7 @@
-import type { ICommand } from "../interfaces/ICommand.js";
+import type { Command } from "../types/interfaces/Command.js";
 import { obs } from "../utils/obs.js";
 
-const endStream: ICommand = {
+export const endStream: Command = {
     function: async (context) => {
         const r = Math.random();
 
@@ -15,5 +15,3 @@ const endStream: ICommand = {
     name: "stopstreaming",
     description: "1/10000 chance to end stream outright.",
 };
-
-export { endStream };
