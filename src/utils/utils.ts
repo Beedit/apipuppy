@@ -14,9 +14,10 @@ import { endStream } from "../commands/endstream.js";
 import { wheatley } from "../commands/wheatley.js";
 import { discord } from "../commands/discord.js";
 import { followage } from "../commands/followage.js";
+import { code } from "../commands/source.js";
 
 /** Reference to all commands in the bot. */
-const commands = [discord, followage, brown, gold, fortune, isthisgoingtopb, gg, wheatley, woof, lurk, pb, freak, help, endStream];
+const commands = [discord, followage, brown, gold, fortune, isthisgoingtopb, gg, wheatley, woof, lurk, pb, freak, help, endStream, code];
 /**
  * Selects a random item from a given list.
  * @param list List of items
