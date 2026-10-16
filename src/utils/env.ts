@@ -6,7 +6,7 @@ import { loadEnv } from "@ctroenv/node";
 export const env = defineEnv({
     clientID: string(),
     // clientSecret: string(),
-    username: string(),
+    channel: string(),
     accessToken: string(),
     // refreshToken: string(),
     obsAddress: string().url(),

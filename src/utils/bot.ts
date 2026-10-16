@@ -1,4 +1,5 @@
 import { StaticAuthProvider } from "@twurple/auth";
+import { ApiClient } from "@twurple/api";
 import { Bot } from "@twurple/easy-bot";
 import { env } from "./env.js";
 import { commands, createCommands } from "./utils.js";
@@ -9,9 +10,11 @@ const auth = () => {
 
 const bot = new Bot({
     authProvider: auth(),
-    channel: env.username,
+    channel: env.channel,
     commands: createCommands(commands),
 });
+
+const apiClient = new ApiClient({ authProvider: auth() });
 
 bot.onSub(({ broadcasterName, userName }) => {
     void bot.say(broadcasterName, `AWOO @${userName}!! subscribed to the channel!`);
@@ -30,4 +33,4 @@ bot.onRaid(({ broadcasterName, userName, viewerCount }) => {
     void bot.say(broadcasterName, `AWOO!!! ${userName} is raiding with ${viewerCount} ${pupText}!!!`);
 });
 
-export { auth as authProvider, bot };
+export { auth as authProvider, bot, apiClient };
