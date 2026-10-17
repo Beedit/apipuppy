@@ -44,5 +44,6 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
   },
-  "include": ["src", "./eslint.config.ts"]
+  "include": ["src", "./eslint.config.ts"],
+  "exclude": ["dist"]
 }

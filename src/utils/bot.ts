@@ -1,16 +1,16 @@
 import { StaticAuthProvider } from "@twurple/auth";
 import { ApiClient } from "@twurple/api";
 import { Bot } from "@twurple/easy-bot";
-import { env } from "./env.js";
 import { commands, createCommands } from "./utils.js";
+import config from "./config.js";
 
 const auth = () => {
-    return new StaticAuthProvider(env.clientID, env.accessToken);
+    return new StaticAuthProvider(config.clientID, config.accessToken);
 };
 
 const bot = new Bot({
     authProvider: auth(),
-    channel: env.channel,
+    channel: config.channel,
     commands: createCommands(commands()),
 });
 
