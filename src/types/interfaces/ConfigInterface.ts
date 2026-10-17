@@ -6,4 +6,5 @@ export default interface Config {
     channel: string
     obsAddress: string
     obsPassword: string
+    userID: string
 }

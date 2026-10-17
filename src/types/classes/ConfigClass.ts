@@ -6,8 +6,6 @@ import path from "node:path";
 
 export default class ConfigClass implements Config {
     constructor(config: Config, filePath: string) {
-        console.log(config);
-
         this.clientID = config.clientID;
         this.clientSecret = config.clientSecret;
         this.accessToken = config.accessToken;
@@ -16,6 +14,7 @@ export default class ConfigClass implements Config {
         this.obsAddress = config.obsAddress;
         this.obsPassword = config.obsPassword;
         this.configFilePath = String(path.join(import.meta.dirname, filePath));
+        this.userID = config.userID;
     }
 
     private _configFilePath!: string;
@@ -25,6 +24,15 @@ export default class ConfigClass implements Config {
 
     public set configFilePath(value: string) {
         this._configFilePath = value;
+    }
+
+    private _userID!: string;
+    public get userID(): string {
+        return this._userID;
+    }
+
+    public set userID(value: string) {
+        this._userID = value;
     }
 
     private _clientID!: string;
