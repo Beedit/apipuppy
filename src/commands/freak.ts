@@ -4,7 +4,14 @@ import messages from "../data/messages.json" with { type: "json" };
 
 export const freak: Command = {
     function: async (context) => {
-        await context.reply(selectRandom(messages.freaky));
+        const r = Math.random();
+
+        if (r <= 1) {
+            await context.reply("Mods. ban this guy.");
+            await context.say(`/timeout ${context.userDisplayName} 60`);
+        } else {
+            await context.reply(selectRandom(messages.freaky));
+        }
     },
     name: "freak",
     parameters: { aliases: ["joi", "freaky"] },
