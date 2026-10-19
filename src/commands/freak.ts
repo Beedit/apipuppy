@@ -6,7 +6,7 @@ export const freak: Command = {
     function: async (context) => {
         const r = Math.random();
 
-        if (r <= 1) {
+        if (r <= 0.001) {
             await context.reply("Mods. ban this guy.");
             await context.say(`/timeout ${context.userDisplayName} 60`);
         } else {
