@@ -1,10 +1,10 @@
 import type { Command } from "../types/interfaces/Command.js";
 import { selectRandom } from "../utils/utils.js";
-import messages from "../data/messages.json" with { type: "json" };
+import { getMessages } from "../utils/messageHelper.js";
 
 export const wheatley: Command = {
     function: async (context) => {
-        await context.reply(selectRandom(messages.wheatley));
+        await context.reply(selectRandom(getMessages("wheatley")));
     },
     name: "wheatley",
     parameters: { aliases: ["wheat", "wheatle"] },

@@ -1,6 +1,6 @@
 import type { Command } from "../types/interfaces/Command.js";
 import { selectRandom } from "../utils/utils.js";
-import messages from "../data/messages.json" with { type: "json" };
+import { getMessages } from "../utils/messageHelper.js";
 
 export const isthisgoingtopb: Command = {
     function: async (context) => {
@@ -8,11 +8,11 @@ export const isthisgoingtopb: Command = {
         let verdict: string;
 
         if (chance >= 90) {
-            verdict = selectRandom(messages.pbHigh);
+            verdict = selectRandom(getMessages("pbHigh"));
         } else if (chance >= 50) {
-            verdict = selectRandom(messages.pbMed);
+            verdict = selectRandom(getMessages("pbMed"));
         } else {
-            verdict = selectRandom(messages.pbLow);
+            verdict = selectRandom(getMessages("pbLow"));
         }
 
         await context.reply(`/me ${verdict} | PB Chance: ${String(chance)}%`);

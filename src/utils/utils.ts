@@ -17,6 +17,7 @@ import { followage } from "../commands/followage.js";
 import { code } from "../commands/source.js";
 import { Logger } from "tslog";
 import { obsStatus } from "./obs.js";
+import { addreply } from "../commands/addreply.js";
 
 /**
  * Logger for program.
@@ -32,7 +33,7 @@ const logger = new Logger({
     },
 });
 
-const commandList = [discord, followage, brown, gold, fortune, isthisgoingtopb, gg, wheatley, woof, lurk, pb, freak, help, code];
+const commandList = [discord, followage, brown, gold, fortune, isthisgoingtopb, gg, wheatley, woof, lurk, pb, freak, help, addreply, code];
 const obsCommandList = [endStream];
 
 /** Reference to all commands in the bot. */

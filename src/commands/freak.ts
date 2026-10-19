@@ -1,6 +1,6 @@
 import type { Command } from "../types/interfaces/Command.js";
 import { selectRandom } from "../utils/utils.js";
-import messages from "../data/messages.json" with { type: "json" };
+import { getMessages } from "../utils/messageHelper.js";
 
 export const freak: Command = {
     function: async (context) => {
@@ -10,7 +10,7 @@ export const freak: Command = {
             await context.reply("Mods. ban this guy.");
             await context.say(`/timeout ${context.userDisplayName} 60`);
         } else {
-            await context.reply(selectRandom(messages.freaky));
+            await context.reply(selectRandom(getMessages("freaky")));
         }
     },
     name: "freak",
