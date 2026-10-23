@@ -19,5 +19,6 @@ export const help: Command = {
         }
     },
     name: "help",
+    parameters: { aliases: ["commands"] },
     description: "A help command. Use !help <command> to work out what a command does or just !help for a list of commands",
 };

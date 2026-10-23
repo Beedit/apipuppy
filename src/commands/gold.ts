@@ -7,5 +7,6 @@ export const gold: Command = {
         await context.reply(selectRandom(getMessages("gold")));
     },
     name: "gold",
+    parameters: { aliases: ["glod", "jold"] },
     description: "Celebrate a gold split with us!",
 };
